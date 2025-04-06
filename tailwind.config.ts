@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				tech: {
+					'blue': '#0EA5E9',
+					'cyan': '#22D3EE',
+					'dark': '#0F172A',
+					'darker': '#020617'
 				}
 			},
 			borderRadius: {
@@ -70,25 +77,35 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' }
+				},
+				'glow': {
+					'0%, 100%': { textShadow: '0 0 10px rgba(14, 165, 233, 0.7), 0 0 20px rgba(14, 165, 233, 0.5)' },
+					'50%': { textShadow: '0 0 15px rgba(14, 165, 233, 0.9), 0 0 30px rgba(14, 165, 233, 0.7)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'tech-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwLTIuMi0xLjgtNC00LTRIN2MtMi4yIDAtNCAxLjgtNCA0djE5YzAgMi4yIDEuOCA0IDQgNGgyNWMyLjIgMCA0LTEuOCA0LTRWMzR6IiBmaWxsPSIjNTZhYWYxIiBvcGFjaXR5PSIuMSIvPjxwYXRoIGQ9Ik00IDQxaDI1djN6IiBzdHJva2U9IiM1NmFhZjEiIHN0cm9rZS13aWR0aD0iLjUiLz48cGF0aCBkPSJNNyAzMGgyNXY0SDB6IiBmaWxsPSIjNTZhYWYxIiBvcGFjaXR5PSIuMiIvPjxwYXRoIGQ9Ik01MCAzMGMwLTIuMi0xLjgtNC00LTRIMjFjLTIuMiAwLTQgMS44LTQgNHYxOWMwIDIuMiAxLjggNCA0IDRoMjVjMi4yIDAgNC0xLjggNC00VjMweiIgZmlsbD0iIzU2YWFmMSIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNMTggMzdoMjV2M3oiIHN0cm9rZT0iIzU2YWFmMSIgc3Ryb2tlLXdpZHRoPSIuNSIvPjxwYXRoIGQ9Ik0yMSAyNmgyNXY0SDE0eiIgZmlsbD0iIzU2YWFmMSIgb3BhY2l0eT0iLjIiLz48L2c+PC9zdmc+')"
 			}
 		}
 	},
