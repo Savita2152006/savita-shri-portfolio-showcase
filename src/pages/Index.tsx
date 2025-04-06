@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("about");
@@ -10,6 +11,14 @@ const Index = () => {
       setIsLoaded(true);
     }, 500);
   }, []);
+
+  const scrollToSection = (sectionId) => {
+    setActiveTab(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-tech-darker circuit-bg overflow-x-hidden">
@@ -28,31 +37,31 @@ const Index = () => {
             
             <div className="hidden md:flex space-x-6">
               <button 
-                onClick={() => setActiveTab("about")} 
+                onClick={() => scrollToSection("about")} 
                 className={`${activeTab === "about" ? "text-tech-blue" : "text-white/70"} hover:text-tech-cyan transition-colors duration-300`}
               >
                 About
               </button>
               <button 
-                onClick={() => setActiveTab("skills")} 
+                onClick={() => scrollToSection("skills")} 
                 className={`${activeTab === "skills" ? "text-tech-blue" : "text-white/70"} hover:text-tech-cyan transition-colors duration-300`}
               >
                 Skills
               </button>
               <button 
-                onClick={() => setActiveTab("learn")} 
+                onClick={() => scrollToSection("learn")} 
                 className={`${activeTab === "learn" ? "text-tech-blue" : "text-white/70"} hover:text-tech-cyan transition-colors duration-300`}
               >
                 Learning Path
               </button>
               <button 
-                onClick={() => setActiveTab("projects")} 
+                onClick={() => scrollToSection("projects")} 
                 className={`${activeTab === "projects" ? "text-tech-blue" : "text-white/70"} hover:text-tech-cyan transition-colors duration-300`}
               >
                 Projects
               </button>
               <button 
-                onClick={() => setActiveTab("contact")} 
+                onClick={() => scrollToSection("contact")} 
                 className={`${activeTab === "contact" ? "text-tech-blue" : "text-white/70"} hover:text-tech-cyan transition-colors duration-300`}
               >
                 Contact
@@ -85,10 +94,10 @@ const Index = () => {
                 <span className="text-tech-blue font-medium"> JavaScript</span>.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <button onClick={() => setActiveTab("projects")} className="tech-button">
+                <button onClick={() => scrollToSection("projects")} className="tech-button">
                   View Projects
                 </button>
-                <button onClick={() => setActiveTab("contact")} className="border border-tech-blue text-tech-blue px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-tech-blue/10">
+                <button onClick={() => scrollToSection("contact")} className="border border-tech-blue text-tech-blue px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-tech-blue/10">
                   Contact Me
                 </button>
               </div>
@@ -102,18 +111,13 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent"></div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full border border-tech-blue/30 border-glow flex items-center justify-center bg-tech-darker">
-                <div className="text-center">
-                  <p className="text-xs text-gray-400">Experience</p>
-                  <p className="text-xl font-bold text-tech-blue">2+ yrs</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* About Me Section */}
         <section 
+          id="about"
           className={`mt-24 transition-all duration-700 ${isLoaded && activeTab === "about" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${activeTab === "about" ? "block" : "hidden md:block"}`}
         >
           <div className="tech-card p-8 md:p-10">
@@ -142,9 +146,9 @@ const Index = () => {
                 </div>
                 <div className="flex justify-center items-center">
                   <img 
-                    src="/lovable-uploads/1d1ea2c4-ae0d-4c09-8173-a6c51aa939c6.png" 
-                    alt="Tech AI" 
-                    className="rounded-lg max-h-64 border border-tech-blue/20 shadow-lg shadow-tech-blue/10"
+                    src="/lovable-uploads/8d11208b-a249-419e-b3c5-ba7b70016133.png" 
+                    alt="G. Savita Shri" 
+                    className="rounded-lg max-h-80 border border-tech-blue/20 shadow-lg shadow-tech-blue/10"
                   />
                 </div>
               </div>
@@ -154,6 +158,7 @@ const Index = () => {
 
         {/* Skills Section */}
         <section 
+          id="skills"
           className={`mt-24 transition-all duration-700 ${isLoaded && activeTab === "skills" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${activeTab === "skills" ? "block" : "hidden md:hidden"}`}
         >
           <div className="tech-card p-8 md:p-10">
@@ -278,6 +283,7 @@ const Index = () => {
 
         {/* Learning Path Section */}
         <section 
+          id="learn"
           className={`mt-24 transition-all duration-700 ${isLoaded && activeTab === "learn" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${activeTab === "learn" ? "block" : "hidden md:hidden"}`}
         >
           <div className="tech-card p-8 md:p-10">
@@ -389,6 +395,7 @@ const Index = () => {
 
         {/* Projects Section */}
         <section 
+          id="projects"
           className={`mt-24 transition-all duration-700 ${isLoaded && activeTab === "projects" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${activeTab === "projects" ? "block" : "hidden md:hidden"}`}
         >
           <div className="tech-card p-8 md:p-10">
@@ -451,6 +458,7 @@ const Index = () => {
 
         {/* Contact Section */}
         <section 
+          id="contact"
           className={`mt-24 transition-all duration-700 ${isLoaded && activeTab === "contact" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${activeTab === "contact" ? "block" : "hidden md:hidden"}`}
         >
           <div className="tech-card p-8 md:p-10">
@@ -591,7 +599,7 @@ const Index = () => {
       <div className="fixed md:hidden bottom-0 left-0 right-0 bg-tech-darker/90 backdrop-blur-md border-t border-tech-blue/20 py-2 z-50">
         <div className="flex justify-around">
           <button 
-            onClick={() => setActiveTab("about")} 
+            onClick={() => scrollToSection("about")} 
             className={`flex flex-col items-center p-2 ${activeTab === "about" ? "text-tech-blue" : "text-white/70"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -601,7 +609,7 @@ const Index = () => {
           </button>
           
           <button 
-            onClick={() => setActiveTab("skills")} 
+            onClick={() => scrollToSection("skills")} 
             className={`flex flex-col items-center p-2 ${activeTab === "skills" ? "text-tech-blue" : "text-white/70"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -611,7 +619,7 @@ const Index = () => {
           </button>
           
           <button 
-            onClick={() => setActiveTab("learn")} 
+            onClick={() => scrollToSection("learn")} 
             className={`flex flex-col items-center p-2 ${activeTab === "learn" ? "text-tech-blue" : "text-white/70"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -623,7 +631,7 @@ const Index = () => {
           </button>
           
           <button 
-            onClick={() => setActiveTab("projects")} 
+            onClick={() => scrollToSection("projects")} 
             className={`flex flex-col items-center p-2 ${activeTab === "projects" ? "text-tech-blue" : "text-white/70"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -633,7 +641,7 @@ const Index = () => {
           </button>
           
           <button 
-            onClick={() => setActiveTab("contact")} 
+            onClick={() => scrollToSection("contact")} 
             className={`flex flex-col items-center p-2 ${activeTab === "contact" ? "text-tech-blue" : "text-white/70"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
